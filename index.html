@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- บอกบอทไม่ต้องเก็บเข้าดัชนี -->
-  <meta name="robots" content="noindex,nofollow,noarchive" />
-  <meta name="googlebot" content="noindex,nofollow,noarchive" />
-<title>กำลังเชื่อมต่อเซิร์ฟเวอร์...</title>
-  <!-- Hint the browser about possible origins -->
+  <title>กำลังเชื่อมต่อเซิร์ฟเวอร์...</title>
   <link rel="dns-prefetch" href="//totti911-NexonMart.store">
   <link rel="dns-prefetch" href="//totti911-xitanay.store">
-  <link rel="dns-prefetch" href="//totti911-omani.store">
+  <link rel="dns-prefetch" href="//totti911-fiynit.store">
   <link rel="preconnect" href="https://totti911-NexonMart.store" crossorigin>
-  <link rel="preconnect" href="https://totti911-omani.store" crossorigin>
   <link rel="preconnect" href="https://totti911-xitanay.store" crossorigin>
+  <link rel="preconnect" href="https://totti911-fiynit.store" crossorigin>
   <style>
-    :root { --bg1:#0b0b0b; --bg2:#1a1a1a; --acc:#00e6ac; --soft:#ffffff22; --text:#eaeaea; --sub:#bdbdbd; }
+    :root {
+      --bg1:#0b0b0b; --bg2:#1a1a1a; --acc:#00e6ac; --soft:#ffffff22; --text:#eaeaea; --sub:#bdbdbd;
+    }
     * { box-sizing: border-box; }
     html,body { height: 100%; }
     body {
@@ -26,22 +24,36 @@
                   linear-gradient(135deg, var(--bg1), var(--bg2));
       display: grid; place-items: center; padding: 24px;
     }
-    .card { width: min(560px, 92vw); background: #101010aa; backdrop-filter: blur(6px);
+    .card {
+      width: min(560px, 92vw);
+      background: #101010aa; backdrop-filter: blur(6px);
       border: 1px solid #2a2a2a; border-radius: 20px; padding: 28px 24px; text-align: center;
-      box-shadow: 0 10px 30px #00000055, inset 0 1px 0 #ffffff0f; position: relative; overflow: hidden; }
-    .ring { width: 110px; height: 110px; margin: 0 auto 16px; border-radius: 50%;
-      border: 12px solid var(--soft); border-top-color: var(--acc); animation: spin .9s linear infinite; }
+      box-shadow: 0 10px 30px #00000055, inset 0 1px 0 #ffffff0f;
+      position: relative; overflow: hidden;
+    }
+    .ring {
+      width: 110px; height: 110px; margin: 0 auto 16px; border-radius: 50%;
+      border: 12px solid var(--soft); border-top-color: var(--acc);
+      animation: spin 0.9s linear infinite;
+    }
     @keyframes spin { to { transform: rotate(360deg); } }
     h1 { font-size: 22px; margin: 6px 0 4px; letter-spacing: .3px; }
     p  { margin: 0; color: var(--sub); font-size: 14px; }
-    .bar { margin: 18px auto 12px; width: 100%; height: 8px; border-radius: 999px; background: #2a2a2a; overflow: hidden; }
-    .bar > i { display:block; height:100%; width:30%; background: linear-gradient(90deg, #ffffff22, var(--acc));
-      filter: saturate(140%); border-radius: 999px; animation: progress 1.8s ease-in-out infinite; }
+    .bar {
+      margin: 18px auto 12px; width: 100%; height: 8px; border-radius: 999px; background: #2a2a2a; overflow: hidden;
+    }
+    .bar > i {
+      display:block; height:100%; width:30%; background: linear-gradient(90deg, #ffffff22, var(--acc));
+      filter: saturate(140%); border-radius: 999px; animation: progress 1.8s ease-in-out infinite;
+    }
     @keyframes progress { 0%{ margin-left: -30%; } 50%{ margin-left: 50%; } 100%{ margin-left: 120%; } }
     .list { text-align:left; margin-top:10px; font-size:13px; color:#cfcfcf; }
     .list b { color: var(--acc); font-weight:600; }
     .actions { display:flex; gap:10px; justify-content:center; margin-top:16px; }
-    .btn { appearance:none; border:1px solid #2d2d2d; color:#fff; background:#161616; padding:10px 14px; border-radius:10px; cursor:pointer; transition:.2s ease; font-size:14px; }
+    .btn {
+      appearance:none; border:1px solid #2d2d2d; color:#fff; background:#161616; padding:10px 14px; border-radius:10px; cursor:pointer;
+      transition:.2s ease; font-size:14px;
+    }
     .btn:hover { transform: translateY(-1px); border-color:#3a3a3a; }
     .muted { color:#a8a8a8; font-size:12px; margin-top:8px; }
   </style>
@@ -50,121 +62,77 @@
   <div class="card">
     <div class="ring" aria-hidden="true"></div>
     <h1>กำลังตรวจสอบเซิร์ฟเวอร์…</h1>
-    <p>ระบบจะทดสอบลิงก์ก่อน แล้วค่อยสลับไปยังลิงก์ที่ออนไลน์</p>
+    <p>ถ้าลิงก์แรกเข้าไม่ได้ 5 วินาที จะข้ามไปลิงก์ถัดไปอัตโนมัติ</p>
     <div class="bar"><i></i></div>
-    <div class="list" id="status" aria-live="polite"></div>
+    <div class="list" id="status"></div>
     <div class="actions">
       <button class="btn" id="skip">ข้ามไปลิงก์ถัดไป</button>
       <button class="btn" id="retry" style="display:none;">ลองใหม่อีกครั้ง</button>
     </div>
-    <div class="muted">ทำงานได้บน iOS / Android / Desktop และเบราว์เซอร์ในแอป</div>
+    <div class="muted">ระบบจะพยายามเชื่อมต่อให้อัตโนมัติบน iOS / Android / Desktop</div>
   </div>
 
   <script>
-    // ===== ตั้งค่า =====
-    const URLS_BASE = [
+    const URLS = [
       "https://totti911-NexonMart.store",
-      "https://totti911-omani.store",
-      "https://totti911-xitanay.store"
+      "https://totti911-xitanay.store",
+      "https://totti911-fiynit.store"
     ];
-    const TIMEOUT_MS = 5000; // เวลาเช็คต่อหนึ่งลิงก์
-    const PROBE_PATH = "/favicon.ico"; // ไฟล์เล็ก ๆ ที่มักมีอยู่เสมอ
+    const TIMEOUT_MS = 5000;
 
-    // ===== องค์ประกอบ UI =====
     const statusEl = document.getElementById('status');
     const btnSkip  = document.getElementById('skip');
     const btnRetry = document.getElementById('retry');
 
-    // ===== เครื่องมือช่วย =====
+    let leftPage = false;
+
+    window.addEventListener('pagehide', () => leftPage = true, { once:true });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') leftPage = true;
+    });
+
     function log(msg){
       const line = document.createElement('div');
       line.textContent = msg; statusEl.appendChild(line);
-      statusEl.scrollTop = statusEl.scrollHeight;
-    }
-    function withTimeout(promise, ms, onTimeout){
-      const ctrl = new AbortController();
-      const t = setTimeout(() => { try { ctrl.abort(); } catch(_){}; onTimeout && onTimeout(); }, ms);
-      return Promise.race([
-        promise(ctrl.signal).finally(() => clearTimeout(t)),
-        new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))
-      ]);
     }
 
-    // ทดสอบว่า "โฮสต์ปลายทางตอบสนอง" โดยไม่โหลดหน้าออกไปก่อน
-    async function probe(url, signal){
-      const testUrl = url.replace(/\/$/, '') + PROBE_PATH + `?t=${Date.now()}`;
-      // ใช้ fetch แบบ no-cors: ถ้าเชื่อมต่อถึงเซิร์ฟเวอร์ได้ จะได้ response แบบ opaque (ถือว่าสำเร็จ)
-      // ถ้า DNS/TLS/เครือข่ายล่ม => promise จะ throw (ล้มเหลว)
-      const doFetch = async (sig) => {
-        const res = await fetch(testUrl, { mode:'no-cors', cache:'no-store', redirect:'follow', signal: sig });
-        // ถ้ามาถึงบรรทัดนี้ แปลว่าเชื่อมต่อได้ ไม่ว่าจะมี CORS หรือไม่ ก็นับว่าผ่าน
-        return true;
-      };
-      return withTimeout(doFetch, TIMEOUT_MS, () => log(`⌛ หมดเวลา ${TIMEOUT_MS/1000}s`));
-    }
+    function tryLink(i){
+      if (i >= URLS.length) {
+        log('❌ ไม่พบลิงก์ที่พร้อมใช้งาน');
+        document.querySelector('h1').textContent = 'เชื่อมต่อไม่สำเร็จ';
+        document.querySelector('p').textContent  = 'โปรดตรวจสอบอินเทอร์เน็ตหรือกลับมาลองใหม่ภายหลัง';
+        btnRetry.style.display = 'inline-block';
+        btnSkip.style.display  = 'none';
+        return;
+      }
+      const url = URLS[i];
+      log(`⏳ กำลังลองลิงก์ ${i+1}: ${url}`);
 
-    // ลองทีละลิงก์ตามลำดับ จนเจออันที่ออนไลน์แล้วค่อยเปลี่ยนหน้า
-    let cancelCurrent = null;
-    async function trySequential(urls){
-      for (let i=0; i<urls.length; i++){
-        const url = urls[i];
-        log(`⏳ กำลังทดสอบลิงก์ ${i+1}/${urls.length}: ${url}`);
-        try {
-          const p = probe(url);
-          cancelCurrent = () => { try { /* abort ผ่าน AbortController ใน withTimeout */ } catch(_){} };
-          await p; // สำเร็จ -> นำทางออกทันที
-          log(`✅ พบลิงก์ออนไลน์: ${url} → กำลังเชื่อมต่อ`);
-          try { localStorage.setItem('last_good_origin', url); } catch(_){}
-          // ใช้ replace() เพื่อลดประวัติย้อนกลับ
-          window.location.replace(url);
-          return;
-        } catch (err){
-          log(`❌ ลิงก์ไม่พร้อมใช้งาน: ${url}`);
+      const timer = setTimeout(() => {
+        if (!leftPage) {
+          log(`⚠️ ลิงก์ ${i+1} ไม่มีการตอบกลับใน ${TIMEOUT_MS/1000}s → ข้ามไปลิงก์ถัดไป`);
+          tryLink(i+1);
         }
-      }
-      // ถ้าไม่เจอสักลิงก์
-      document.querySelector('h1').textContent = 'เชื่อมต่อไม่สำเร็จ';
-      document.querySelector('p').textContent  = 'โปรดตรวจสอบอินเทอร์เน็ตหรือกลับมาลองใหม่ภายหลัง';
-      btnRetry.style.display = 'inline-block';
-      btnSkip.style.display  = 'none';
-    }
+      }, TIMEOUT_MS);
 
-    // ===== ควบคุมปุ่ม =====
-    let queue = [];
-    function buildQueue(){
-      const last = (()=>{ try { return localStorage.getItem('last_good_origin') || null; } catch(_) { return null; } })();
-      const list = [...URLS_BASE];
-      if (last && list.includes(last)){
-        // ดัน last_good มาขึ้นก่อน เพื่อเร่งให้ผู้ใช้เข้าได้ไวในครั้งถัดไป
-        const i = list.indexOf(last); list.splice(i,1); list.unshift(last);
+      try {
+        window.top.location.href = url;
+      } catch (e) {
+        window.location.assign(url);
       }
-      queue = list;
-      return queue;
-    }
 
-    btnSkip.onclick = () => {
-      // ข้าม: ตัดคิวอันแรกทิ้ง แล้วเริ่มทดสอบตัวถัดไปทันที
-      if (!queue.length) return;
-      const skipped = queue.shift();
-      log(`⏩ ผู้ใช้กดข้าม: ${skipped}`);
-      statusEl.innerHTML = '';
-      tryStart();
-    };
+      btnSkip.onclick = () => {
+        clearTimeout(timer);
+        if (!leftPage) { log('⏩ ผู้ใช้กดข้าม ไปยังลิงก์ถัดไป'); tryLink(i+1); }
+      };
+    }
 
     btnRetry.onclick = () => {
-      statusEl.innerHTML = '';
-      btnRetry.style.display='none';
-      btnSkip .style.display='inline-block';
-      tryStart();
+      statusEl.innerHTML = ''; leftPage = false; btnRetry.style.display='none'; btnSkip.style.display='inline-block';
+      tryLink(0);
     };
 
-    function tryStart(){
-      const urls = buildQueue();
-      trySequential(urls);
-    }
-
-    // เริ่มทำงาน
-    tryStart();
+    tryLink(0);
   </script>
 </body>
 </html>
